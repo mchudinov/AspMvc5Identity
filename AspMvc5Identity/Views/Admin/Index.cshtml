@@ -7,10 +7,10 @@
         User Accounts
     </div>
     <table>
-        <tr><th>ID</th><th>Name</th><th>Email</th></tr>
+        <tr><th>ID</th><th>Name</th><th>Email</th><th></th></tr>
         @if (!Model.Any())
         {
-            <tr><td colspan="3">No User Accounts</td></tr>
+            <tr><td colspan="4">No User Accounts</td></tr>
         }
         else
         {
@@ -20,6 +20,13 @@
                     <td>@user.Id</td>
                     <td>@user.UserName</td>
                     <td>@user.Email</td>
+                    <td>
+                        @using (Html.BeginForm("Delete", "Admin",new { id = user.Id }))
+                        {
+                            @Html.ActionLink("Edit", "Edit", new { id = user.Id }, null)
+                            <button type="submit">Delete</button>
+                        }
+                    </td>
                 </tr>
             }
         }
