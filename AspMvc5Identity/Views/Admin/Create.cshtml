@@ -1,0 +1,22 @@
+﻿@model AspMvc5Identity.Models.CreateModel
+@{ ViewBag.Title = "Create User";}
+
+<h2>Create User</h2>
+@Html.ValidationSummary(false)
+@using (Html.BeginForm())
+{
+    <div>
+        <label>Name</label>
+        @Html.TextBoxFor(x => x.Name)
+    </div>
+    <div>
+        <label>Email</label>
+        @Html.TextBoxFor(x => x.Email)
+    </div>
+    <div>
+        <label>Password</label>
+        @Html.PasswordFor(x => x.Password)
+    </div>
+    <button type="submit">Create</button>
+    @Html.ActionLink("Cancel", "Index", null, null)
+}

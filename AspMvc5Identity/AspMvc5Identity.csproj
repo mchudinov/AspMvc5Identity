@@ -141,6 +141,7 @@
     <Content Include="App_Data\IdentityDb_log.ldf">
       <DependentUpon>IdentityDb.mdf</DependentUpon>
     </Content>
+    <Content Include="Content\Site.css" />
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -155,6 +156,7 @@
     <Compile Include="IdentityConfig.cs" />
     <Compile Include="IdentityDbInit.cs" />
     <Compile Include="Models\AppUser.cs" />
+    <Compile Include="Models\UserViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -163,6 +165,9 @@
     </Content>
     <Content Include="packages.config" />
     <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Admin\Create.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
