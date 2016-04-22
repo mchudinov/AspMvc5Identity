@@ -1,0 +1,14 @@
+﻿@model string
+@{ ViewBag.Title = "Create Role";}
+
+<h2>Create Role</h2>
+@Html.ValidationSummary(false)
+@using (Html.BeginForm())
+{
+    <div>
+        <label>Name</label>
+        <input name="name" value="@Model" />
+    </div>
+    <button type="submit">Create</button>
+    @Html.ActionLink("Cancel", "Index", null, null)
+}
