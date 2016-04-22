@@ -1,0 +1,29 @@
+﻿@using AspMvc5Identity.Models
+@model IEnumerable<AspMvc5Identity.Models.AppUser>
+@{
+    ViewBag.Title = "Index";
+}
+<div>
+    <div>
+        User Accounts
+    </div>
+    <table>
+        <tr><th>ID</th><th>Name</th><th>Email</th></tr>
+        @if (!Model.Any())
+        {
+            <tr><td colspan="3" class="text-center">No User Accounts</td></tr>
+        }
+        else
+        {
+            foreach (AppUser user in Model)
+            {
+                <tr>
+                    <td>@user.Id</td>
+                    <td>@user.UserName</td>
+                    <td>@user.Email</td>
+                </tr>
+            }
+        }
+    </table>
+</div>
+@Html.ActionLink("Create", "Create", null, null)
