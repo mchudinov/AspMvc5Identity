@@ -1,0 +1,31 @@
+﻿@model AspMvc5Identity.Models.AppUser
+@{ ViewBag.Title = "Edit"; }
+@Html.ValidationSummary(false)
+
+<h2>Edit User</h2>
+<div>
+    <label>User ID</label>
+    <p>@Model.Id</p>
+</div>
+<div>
+    <label>User name</label>
+    <p>@Model.UserName</p>
+</div>
+@using (Html.BeginForm())
+{
+    @Html.HiddenFor(x => x.Id)
+    <div>
+        <label>Name</label>
+        @Html.TextBoxFor(x => x.UserName)
+    </div>
+    <div>
+        <label>Email</label>
+        @Html.TextBoxFor(x => x.Email)
+    </div>
+    <div>
+        <label>Password</label>
+        <input name="password" type="password" />
+    </div>
+    <button type="submit">Save</button>
+    @Html.ActionLink("Cancel", "Index", null, null)
+}
