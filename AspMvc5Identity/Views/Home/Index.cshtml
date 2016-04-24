@@ -1,0 +1,15 @@
+﻿@{ ViewBag.Title = "Index"; }
+
+<div>
+    <div>User Details</div>
+    <table>
+        @foreach (string key in Model.Keys)
+        {
+            <tr>
+                <th>@key</th>
+                <td>@Model[key]</td>
+            </tr>
+        }
+    </table>
+</div>
+@Html.ActionLink("Sign Out", "Logout", "Account", null, null)

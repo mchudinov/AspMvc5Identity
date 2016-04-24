@@ -9,11 +9,16 @@ using Microsoft.Owin.Security;
 
 namespace AspMvc5Identity.Controllers
 {
+    [Authorize]
     public class AccountController : Controller
     {
         [AllowAnonymous]
         public ActionResult Login(string returnUrl)
         {
+            if (HttpContext.User.Identity.IsAuthenticated)
+            {
+                return View("Error", new string[] { "Access Denied. Already logged in." });
+            }
             ViewBag.returnUrl = returnUrl;
             return View();
         }        
@@ -40,6 +45,13 @@ namespace AspMvc5Identity.Controllers
             }
             ViewBag.returnUrl = returnUrl;
             return View(details);
+        }
+
+        [Authorize]
+        public ActionResult Logout()
+        {
+            AuthManager.SignOut();
+            return RedirectToAction("Index", "Home");
         }
 
         private IAuthenticationManager AuthManager => HttpContext.GetOwinContext().Authentication;
