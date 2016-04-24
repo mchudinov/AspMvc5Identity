@@ -8,6 +8,7 @@ using Microsoft.AspNet.Identity.Owin;
 
 namespace AspMvc5Identity.Controllers
 {
+    [Authorize(Roles = "Administrators")]
     public class AdminController : Controller
     {
         private AppUserManager UserManager => HttpContext.GetOwinContext().GetUserManager<AppUserManager>();

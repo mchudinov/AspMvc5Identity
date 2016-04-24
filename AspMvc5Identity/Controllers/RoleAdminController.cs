@@ -10,6 +10,7 @@ using Microsoft.AspNet.Identity.Owin;
 
 namespace AspMvc5Identity.Controllers
 {
+    [Authorize(Roles = "Administrators")]
     public class RoleAdminController : Controller   
     {
         public ActionResult Index()
