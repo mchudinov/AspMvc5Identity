@@ -12,12 +12,15 @@ namespace AspMvc5Identity.Controllers
     [Authorize]
     public class AccountController : Controller
     {
+        private IAuthenticationManager AuthManager => HttpContext.GetOwinContext().Authentication;
+        private AppUserManager UserManager => HttpContext.GetOwinContext().GetUserManager<AppUserManager>();
+
         [AllowAnonymous]
         public ActionResult Login(string returnUrl)
         {
             if (HttpContext.User.Identity.IsAuthenticated)
             {
-                return View("Error", new string[] { "Access Denied. Already logged in." });
+                return View("Error", new [] { "Access Denied. Already logged in." });
             }
             ViewBag.returnUrl = returnUrl;
             return View();
@@ -53,9 +56,5 @@ namespace AspMvc5Identity.Controllers
             AuthManager.SignOut();
             return RedirectToAction("Index", "Home");
         }
-
-        private IAuthenticationManager AuthManager => HttpContext.GetOwinContext().Authentication;
-
-        private AppUserManager UserManager => HttpContext.GetOwinContext().GetUserManager<AppUserManager>();
     }
 }

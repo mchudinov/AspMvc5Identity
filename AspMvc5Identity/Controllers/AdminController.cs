@@ -1,5 +1,4 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using AspMvc5Identity.Models;
@@ -60,7 +59,7 @@ namespace AspMvc5Identity.Controllers
             }
             else
             {
-                return View("Error", new string[] { "User Not Found" });
+                return View("Error", new [] { "User Not Found" });
             }
         }
 
