@@ -21,7 +21,7 @@
                     <td>@user.UserName</td>
                     <td>@user.Email</td>
                     <td>
-                        @using (Html.BeginForm("Delete", "Admin",new { id = user.Id }))
+                        @using (Html.BeginForm("Delete", "UserAdmin",new { id = user.Id }))
                         {
                             @Html.ActionLink("Edit", "Edit", new { id = user.Id }, null)
                             <button type="submit">Delete</button>

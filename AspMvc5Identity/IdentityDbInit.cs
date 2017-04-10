@@ -13,7 +13,7 @@ namespace AspMvc5Identity
             AppRoleManager roleMgr = new AppRoleManager(new RoleStore<AppRole>(context));
             string roleName = "Administrators";
             string userName = "admin";
-            string password = "admin1"; //password must be at least 6 charachters by default
+            string password = "admin1"; //password must be at least 6 characters by default
             string email = "admin@example.com";
             if (!roleMgr.RoleExists(roleName))
             {
