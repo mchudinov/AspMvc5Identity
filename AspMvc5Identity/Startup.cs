@@ -5,7 +5,7 @@ using Owin;
 
 namespace AspMvc5Identity
 {
-    public class IdentityConfig
+    public class Startup
     {
         public void Configuration(IAppBuilder app)
         {
