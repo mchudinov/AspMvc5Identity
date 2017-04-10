@@ -7,7 +7,7 @@ using Microsoft.Owin;
 
 namespace AspMvc5Identity
 {
-    public class AppRoleManager : RoleManager<AppRole>, IDisposable
+    public class AppRoleManager : RoleManager<AppRole>
     {
         public AppRoleManager(RoleStore<AppRole> store): base(store) {}
 
