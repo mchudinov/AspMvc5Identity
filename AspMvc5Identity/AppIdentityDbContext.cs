@@ -6,11 +6,9 @@ namespace AspMvc5Identity
 {
     public class AppIdentityDbContext : IdentityDbContext<AppUser>
     {
-        public AppIdentityDbContext() : base("IdentityDb"){}
-
-        static AppIdentityDbContext()
+        public AppIdentityDbContext() : base("IdentityDb")
         {
-            Database.SetInitializer<AppIdentityDbContext>(new IdentityDbInit());            
+            Database.SetInitializer<AppIdentityDbContext>(new IdentityDbInit());
         }
 
         public static AppIdentityDbContext Create()

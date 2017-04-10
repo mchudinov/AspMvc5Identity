@@ -1,10 +1,10 @@
 ﻿@using AspMvc5Identity.Models
-@model IEnumerable<AspMvc5Identity.Models.AppUser>
+@model IEnumerable<AppUser>
 @{ViewBag.Title = "Index";}
 
 <div>
     <div>
-        User Accounts
+        Users
     </div>
     <table>
         <tr><th>ID</th><th>Name</th><th>Email</th><th></th></tr>
@@ -33,3 +33,4 @@
     </table>
 </div>
 @Html.ActionLink("Create", "Create", null, null)
+@Html.ActionLink("Roles", "Index", "RoleAdmin", null, null)

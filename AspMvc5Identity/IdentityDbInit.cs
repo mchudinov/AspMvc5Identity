@@ -5,21 +5,15 @@ using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace AspMvc5Identity
 {
-    public class IdentityDbInit : DropCreateDatabaseIfModelChanges<AppIdentityDbContext>
+    public class IdentityDbInit : CreateDatabaseIfNotExists<AppIdentityDbContext>
     {
         protected override void Seed(AppIdentityDbContext context)
-        {
-            PerformInitialSetup(context);
-            base.Seed(context);
-        }
-
-        public void PerformInitialSetup(AppIdentityDbContext context)
         {
             AppUserManager userMgr = new AppUserManager(new UserStore<AppUser>(context));
             AppRoleManager roleMgr = new AppRoleManager(new RoleStore<AppRole>(context));
             string roleName = "Administrators";
             string userName = "admin";
-            string password = "admin";
+            string password = "admin1"; //password must be at least 6 charachters by default
             string email = "admin@example.com";
             if (!roleMgr.RoleExists(roleName))
             {
@@ -35,6 +29,8 @@ namespace AspMvc5Identity
             {
                 userMgr.AddToRole(user.Id, roleName);
             }
+
+            base.Seed(context);
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
@@ -15,8 +16,9 @@ namespace AspMvc5Identity.Controllers
     {
         public ActionResult Index()
         {
-            return View(RoleManager.Roles);
+            return View(RoleManager.Roles.Include(r => r.Users));
         }
+
         public ActionResult Create()
         {
             return View();

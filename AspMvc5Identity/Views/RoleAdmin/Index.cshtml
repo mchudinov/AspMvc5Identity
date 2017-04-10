@@ -1,5 +1,5 @@
 ﻿@using AspMvc5Identity.Models
-@model IEnumerable<AspMvc5Identity.Models.AppRole>
+@model IEnumerable<AppRole>
 
 @{ ViewBag.Title = "Roles"; }
 <div>
@@ -12,7 +12,7 @@
         }
         else
         {
-            foreach (AppRole role in Model)
+            foreach (AppRole role in Model.ToList())
             {
                 <tr>
                     <td>@role.Id</td>
@@ -21,12 +21,12 @@
                         @if (role.Users == null || role.Users.Count == 0)
                         {
                             @: No Users in Role
-}
+                        }
                         else
                         {
                             <p>
                                 @string.Join(", ", role.Users.Select(x => Html.GetUserName(x.UserId)))
-                        </p>
+                            </p>
                         }
                     </td>
                     <td>
@@ -42,3 +42,4 @@
     </table>
 </div>
 @Html.ActionLink("Create", "Create", null, null)
+@Html.ActionLink("Users", "Index", "Admin", null, null)
