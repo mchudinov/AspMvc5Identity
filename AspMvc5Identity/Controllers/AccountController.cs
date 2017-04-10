@@ -16,20 +16,19 @@ namespace AspMvc5Identity.Controllers
         private AppUserManager UserManager => HttpContext.GetOwinContext().GetUserManager<AppUserManager>();
 
         [AllowAnonymous]
-        public ActionResult Login(string returnUrl)
+        public ActionResult Login()
         {
             if (HttpContext.User.Identity.IsAuthenticated)
             {
                 return View("Error", new [] { "Access Denied. Already logged in." });
             }
-            ViewBag.returnUrl = returnUrl;
             return View();
         }        
 
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Login(LoginModel details, string returnUrl)
+        public async Task<ActionResult> Login(LoginModel details)
         {
             if (ModelState.IsValid)
             {
@@ -43,10 +42,9 @@ namespace AspMvc5Identity.Controllers
                     ClaimsIdentity ident = await UserManager.CreateIdentityAsync(user, DefaultAuthenticationTypes.ApplicationCookie);
                     AuthManager.SignOut();
                     AuthManager.SignIn(new AuthenticationProperties{IsPersistent = false}, ident);
-                    return Redirect(returnUrl);
+                    return RedirectToAction("Index", "UserAdmin");
                 }
             }
-            ViewBag.returnUrl = returnUrl;
             return View(details);
         }
 
