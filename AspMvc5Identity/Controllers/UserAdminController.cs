@@ -23,12 +23,12 @@ namespace AspMvc5Identity.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> Create(CreateModel model)
+        public async Task<ActionResult> Create(CreateUserModel userModel)
         {
             if (ModelState.IsValid)
             {
-                AppUser user = new AppUser { UserName = model.Name, Email = model.Email };
-                IdentityResult result = await UserManager.CreateAsync(user,model.Password);
+                AppUser user = new AppUser { UserName = userModel.Name, Email = userModel.Email };
+                IdentityResult result = await UserManager.CreateAsync(user,userModel.Password);
                 if (result.Succeeded)
                 {
                     return RedirectToAction("Index");
@@ -38,7 +38,7 @@ namespace AspMvc5Identity.Controllers
                     AddErrorsFromResult(result);
                 }
             }
-            return View(model);
+            return View(userModel);
         }
 
         [HttpPost]

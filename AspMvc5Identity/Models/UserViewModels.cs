@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace AspMvc5Identity.Models
 {
-    public class CreateModel
+    public class CreateUserModel
     {
         [Required]
         public string Name { get; set; }
